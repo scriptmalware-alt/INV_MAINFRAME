@@ -1,0 +1,43 @@
+body {
+    background-color: #050505;
+    color: #00ff41;
+    font-family: 'Fira Code', monospace;
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+}
+.neon-text-blue { text-shadow: 0 0 5px rgba(0, 242, 254, 0.7); }
+.neon-text-red { text-shadow: 0 0 5px rgba(255, 0, 60, 0.7); }
+.hacker-card {
+    background-color: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+.hacker-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00ff41, transparent);
+    animation: scanline 3s linear infinite;
+}
+@keyframes scanline {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: #050505; }
+::-webkit-scrollbar-thumb { background: #1a1a1a; }
+::-webkit-scrollbar-thumb:hover { background: #00ff41; }
+.glitch-effect { animation: glitch 1s linear infinite; }
+@keyframes glitch {
+    2%, 64% { transform: translate(2px, 0) scaleY(1); }
+    4%, 60% { transform: translate(-2px, 0) scaleY(1); }
+    62% { transform: translate(0, 0) scaleY(1.1); }
+}
+[contenteditable="true"]:focus {
+    outline: none;
+    background: rgba(0, 255, 65, 0.05);
+}
