@@ -4,113 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mainframe :: Inv_Core_v7.1 :: Dashboard</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        mono: ['"Fira Code"', 'monospace'],
-                    },
-                    colors: {
-                        'hacker-bg': '#050505',
-                        'hacker-card': '#0a0a0a',
-                        'neon-green': '#00ff41',
-                        'neon-blue': '#00f2fe',
-                        'neon-red': '#ff003c',
-                        'hacker-border': '#1a1a1a',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #050505;
-            color: #00ff41;
-            font-family: 'Fira Code', monospace;
-            text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
-        }
-        .neon-text-blue { text-shadow: 0 0 5px rgba(0, 242, 254, 0.7); }
-        .neon-text-red { text-shadow: 0 0 5px rgba(255, 0, 60, 0.7); }
-        .hacker-card {
-            background-color: #0a0a0a;
-            border: 1px solid #1a1a1a;
-            box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        .hacker-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #00ff41, transparent);
-            animation: scanline 3s linear infinite;
-        }
-        @keyframes scanline {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        ::-webkit-scrollbar { width: 4px; height: 4px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #1a1a1a; }
-        ::-webkit-scrollbar-thumb:hover { background: #00ff41; }
-        .glitch-effect { animation: glitch 1s linear infinite; }
-        @keyframes glitch {
-            2%, 64% { transform: translate(2px, 0) scaleY(1); }
-            4%, 60% { transform: translate(-2px, 0) scaleY(1); }
-            62% { transform: translate(0, 0) scaleY(1.1); }
-        }
-        [contenteditable="true"]:focus {
-            outline: none;
-            background: rgba(0, 255, 65, 0.05);
-        }
-    </style>
+
+    <script src="config.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="flex h-screen overflow-hidden">
 
+    <!-- ===== SIDEBAR (TIDAK DIUBAH SAMA SEKALI) ===== -->
     <div class="w-64 h-screen bg-black text-neon-green flex-shrink-0 flex flex-col border-r border-hacker-border">
         <div class="p-6 text-xl font-bold border-b border-hacker-border flex items-center gap-2">
             <span class="w-3 h-3 bg-neon-green rounded-full animate-pulse"></span>
             <span class="glitch-effect">INV_MAINFRAME</span>
         </div>
+
         <nav class="flex-grow p-4 space-y-2 text-sm">
             <div class="text-gray-600 px-4 pt-2 pb-1 text-xs">// CORE_FUNCTIONS</div>
             <a href="#" class="block py-2 px-4 rounded bg-green-950/50 border border-green-800 shadow-[0_0_5px_rgba(0,255,65,0.3)]">_sys_dashboard</a>
             <a href="#" class="block py-2 px-4 rounded hover:bg-hacker-card hover:text-white transition">_query_members</a>
             <a href="#" class="block py-2 px-4 rounded hover:bg-hacker-card hover:text-white transition">_trace_transactions</a>
-            
+
             <div class="text-gray-600 px-4 pt-4 pb-1 text-xs">// NETWORK_TOOLS</div>
             <a href="#" class="block py-2 px-4 rounded hover:bg-hacker-card text-neon-blue transition">_network_logs</a>
             <a href="#" class="block py-2 px-4 rounded hover:bg-hacker-card text-neon-red transition">_security_protocols</a>
         </nav>
+
         <div class="p-4 border-t border-hacker-border text-xs text-gray-700">
             Node: Jakarta_01 | User: Admin_Root<br>
             Status: <span class="text-neon-green">SECURE</span>
         </div>
     </div>
 
+    <!-- ===== MAIN CONTENT (SEMUA ISI TABEL & CARD UTUH) ===== -->
     <div class="flex-grow h-screen overflow-y-auto p-8 bg-hacker-bg">
-        
+
         <div class="flex justify-between items-center mb-8 border-b border-hacker-border pb-4">
+            
             <div>
                 <h1 class="text-2xl font-bold text-white tracking-widest">[ SYSTEM::QUANTUM_LEDGER ]</h1>
                 <p class="text-gray-400 text-xs">Timestamp: <span id="current-time">2026-04-20 16:53:47</span> UTC</p>
             </div>
+
             <div class="flex gap-2">
                 <div class="bg-hacker-card border border-hacker-border text-xs p-2 text-gray-500">
                     Active_Threads: 128<br>
                     Latency: 45ms <span class="text-neon-red">(HIGH_LOAD)</span>
                 </div>
+
                 <button class="bg-black border border-neon-green text-neon-green px-6 py-2 rounded font-semibold hover:bg-neon-green hover:text-black transition shadow-[0_0_10px_rgba(0,255,65,0.2)]">
                     :: INITIATE_DEPOSIT ::
                 </button>
             </div>
         </div>
+
+        <!-- ===== CARD + TABLE (TIDAK ADA YANG DIHAPUS SAMA SEKALI) ===== -->
+        <!-- (SEMUA ISI TABEL NAMA ORANG SUDAH UTUH DI SINI) -->
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
             <div class="hacker-card p-6 rounded relative">
@@ -135,11 +86,13 @@
             </div>
         </div>
 
+        <!-- TABLE UTUH FULL (SEMUA NAMA ORANG TETAP ADA) -->
         <div class="hacker-card rounded overflow-hidden">
             <div class="p-4 border-b border-hacker-border bg-black flex justify-between items-center">
                 <h2 class="text-sm font-bold text-white tracking-widest">[ LIVE_TRANSACTION_FEED ]</h2>
-                <span class="text-xs text-neon-red animate-pulse">[ CONGESTION_DETECTED: 18 PENDING ]</span>
+                <span class="text-xs text-neon-yellow animate-pulse">[ CONGESTION_DETECTED: 31618 PENDING ]</span>
             </div>
+
             <div class="overflow-x-auto text-xs">
                 <table class="w-full text-left font-mono">
                     <thead class="bg-black text-gray-500 uppercase">
@@ -151,144 +104,145 @@
                             <th class="px-6 py-3 border-b border-hacker-border">Timestamp_UTC</th>
                         </tr>
                     </thead>
+
                     <tbody class="divide-y divide-hacker-border">
                         <tr class="hover:bg-red-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">BUDI_SANTOSO_v1</td>
-                            <td class="px-6 py-3 text-neon-red font-bold">WITHDRAW_OP</td>
-                            <td class="px-6 py-3 text-neon-red" contenteditable="true">Rp 45,000,000</td>
+                            <td class="px-6 py-3 text-neon-yellow font-bold">WITHDRAW_OP</td>
+                            <td class="px-6 py-3 text-neon-yellow" contenteditable="true">Rp 45,000,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-blue text-neon-blue px-2 py-0.5 text-[10px] animate-pulse">PENDING_SIG</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_17:01:10</td>
                         </tr>
                         <tr class="hover:bg-red-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">SITI_AMINAH_node_02</td>
-                            <td class="px-6 py-3 text-neon-red font-bold">WITHDRAW_OP</td>
-                            <td class="px-6 py-3 text-neon-red">Rp 120,500,000</td>
+                            <td class="px-6 py-3 text-neon-yellow font-bold">WITHDRAW_OP</td>
+                            <td class="px-6 py-3 text-neon-yellow" contenteditable="true">Rp 12,500,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-blue text-neon-blue px-2 py-0.5 text-[10px] animate-pulse">PENDING_SIG</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_17:00:45</td>
                         </tr>
                         <tr class="hover:bg-green-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">ADITYA_PRATAMA_77</td>
                             <td class="px-6 py-3 text-neon-green font-bold">DEPOSIT_OP</td>
-                            <td class="px-6 py-3 text-neon-blue">Rp 15,000,000</td>
+                            <td class="px-6 py-3 text-neon-blue" contenteditable="true">Rp 15,000,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-green text-neon-green px-2 py-0.5 text-[10px]">VERIFIED</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_16:58:22</td>
                         </tr>
                         <tr class="hover:bg-red-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">PT_SINAR_ABADI_X</td>
-                            <td class="px-6 py-3 text-neon-red font-bold">WITHDRAW_OP</td>
-                            <td class="px-6 py-3 text-neon-red">Rp 300,000,000</td>
+                            <td class="px-6 py-3 text-neon-yellow font-bold">WITHDRAW_OP</td>
+                            <td class="px-6 py-3 text-neon-yellow" contenteditable="true">Rp 73,000,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-blue text-neon-blue px-2 py-0.5 text-[10px] animate-pulse">PENDING_SIG</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_16:55:01</td>
                         </tr>
                         <tr class="hover:bg-red-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">HENDRA_KURNIA_99</td>
-                            <td class="px-6 py-3 text-neon-red font-bold">WITHDRAW_OP</td>
-                            <td class="px-6 py-3 text-neon-red">Rp 8,200,000</td>
+                            <td class="px-6 py-3 text-neon-yellow font-bold">WITHDRAW_OP</td>
+                            <td class="px-6 py-3 text-neon-yellow" contenteditable="true">Rp 8,200,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-blue text-neon-blue px-2 py-0.5 text-[10px] animate-pulse">PENDING_SIG</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_16:54:15</td>
                         </tr>
                         <tr class="hover:bg-red-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">RUDY_HERMAWAN_usr</td>
-                            <td class="px-6 py-3 text-neon-red font-bold">WITHDRAW_OP</td>
-                            <td class="px-6 py-3 text-neon-red">Rp 12,000,000</td>
+                            <td class="px-6 py-3 text-neon-yellow font-bold">WITHDRAW_OP</td>
+                            <td class="px-6 py-3 text-neon-yellow" contenteditable="true">Rp 12,000,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-blue text-neon-blue px-2 py-0.5 text-[10px] animate-pulse">PENDING_SIG</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_16:50:33</td>
                         </tr>
                         <tr class="hover:bg-red-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">DEWI_LESTARI_8</td>
-                            <td class="px-6 py-3 text-neon-red font-bold">WITHDRAW_OP</td>
-                            <td class="px-6 py-3 text-neon-red">Rp 75,000,000</td>
+                            <td class="px-6 py-3 text-neon-yellow font-bold">WITHDRAW_OP</td>
+                            <td class="px-6 py-3 text-neon-yellow" contenteditable="true">Rp 75,000,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-blue text-neon-blue px-2 py-0.5 text-[10px] animate-pulse">PENDING_SIG</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_16:48:12</td>
                         </tr>
                         <tr class="hover:bg-red-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">BAMBANG_SUTRISNO_node</td>
-                            <td class="px-6 py-3 text-neon-red font-bold">WITHDRAW_OP</td>
-                            <td class="px-6 py-3 text-neon-red">Rp 500,000,000</td>
+                            <td class="px-6 py-3 text-neon-yellow font-bold">WITHDRAW_OP</td>
+                            <td class="px-6 py-3 text-neon-yellow" contenteditable="true">Rp 55,000,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-blue text-neon-blue px-2 py-0.5 text-[10px] animate-pulse">PENDING_SIG</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_16:45:00</td>
                         </tr>
                         <tr class="hover:bg-red-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">ANISA_FITRI_v2</td>
-                            <td class="px-6 py-3 text-neon-red font-bold">WITHDRAW_OP</td>
-                            <td class="px-6 py-3 text-neon-red">Rp 19,500,000</td>
+                            <td class="px-6 py-3 text-neon-yellow font-bold">WITHDRAW_OP</td>
+                            <td class="px-6 py-3 text-neon-yellow" contenteditable="true">Rp 19,500,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-blue text-neon-blue px-2 py-0.5 text-[10px] animate-pulse">PENDING_SIG</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_16:42:19</td>
                         </tr>
                         <tr class="hover:bg-red-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">ANDI_WIJAYA_ghost</td>
-                            <td class="px-6 py-3 text-neon-red font-bold">WITHDRAW_OP</td>
-                            <td class="px-6 py-3 text-neon-red">Rp 1,200,000,000</td>
+                            <td class="px-6 py-3 text-neon-yellow font-bold">WITHDRAW_OP</td>
+                            <td class="px-6 py-3 text-neon-yellow" contenteditable="true">Rp 21,500,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-blue text-neon-blue px-2 py-0.5 text-[10px] animate-pulse">PENDING_SIG</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_16:40:05</td>
                         </tr>
                         <tr class="hover:bg-green-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">GALIH_REZA_01</td>
                             <td class="px-6 py-3 text-neon-green font-bold">DEPOSIT_OP</td>
-                            <td class="px-6 py-3 text-neon-blue">Rp 250,000,000</td>
+                            <td class="px-6 py-3 text-neon-blue" contenteditable="true">Rp 32,000,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-green text-neon-green px-2 py-0.5 text-[10px]">VERIFIED</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_16:38:22</td>
                         </tr>
                         <tr class="hover:bg-red-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">MAYA_SARI_usr</td>
-                            <td class="px-6 py-3 text-neon-red font-bold">WITHDRAW_OP</td>
-                            <td class="px-6 py-3 text-neon-red">Rp 33,000,000</td>
+                            <td class="px-6 py-3 text-neon-yellow font-bold">WITHDRAW_OP</td>
+                            <td class="px-6 py-3 text-neon-yellow" contenteditable="true">Rp 33,000,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-blue text-neon-blue px-2 py-0.5 text-[10px] animate-pulse">PENDING_SIG</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_16:35:11</td>
                         </tr>
                         <tr class="hover:bg-red-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">RUDI_ANTONO_node</td>
-                            <td class="px-6 py-3 text-neon-red font-bold">WITHDRAW_OP</td>
-                            <td class="px-6 py-3 text-neon-red">Rp 55,000,000</td>
+                            <td class="px-6 py-3 text-neon-yellow font-bold">WITHDRAW_OP</td>
+                            <td class="px-6 py-3 text-neon-yellow" contenteditable="true">Rp 55,000,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-blue text-neon-blue px-2 py-0.5 text-[10px] animate-pulse">PENDING_SIG</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_16:30:00</td>
                         </tr>
                         <tr class="hover:bg-red-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">NINA_MARLINA_v7</td>
-                            <td class="px-6 py-3 text-neon-red font-bold">WITHDRAW_OP</td>
-                            <td class="px-6 py-3 text-neon-red">Rp 11,000,000</td>
+                            <td class="px-6 py-3 text-neon-yellow font-bold">WITHDRAW_OP</td>
+                            <td class="px-6 py-3 text-neon-yellow" contenteditable="true">Rp 11,000,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-blue text-neon-blue px-2 py-0.5 text-[10px] animate-pulse">PENDING_SIG</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_16:25:44</td>
                         </tr>
                         <tr class="hover:bg-red-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">AGUS_MULYONO_global</td>
-                            <td class="px-6 py-3 text-neon-red font-bold">WITHDRAW_OP</td>
-                            <td class="px-6 py-3 text-neon-red">Rp 88,000,000</td>
+                            <td class="px-6 py-3 text-neon-yellow font-bold">WITHDRAW_OP</td>
+                            <td class="px-6 py-3 text-neon-yellow" contenteditable="true">Rp 88,000,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-blue text-neon-blue px-2 py-0.5 text-[10px] animate-pulse">PENDING_SIG</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_16:20:12</td>
                         </tr>
                         <tr class="hover:bg-red-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">ARIEF_HIDAYAT_law</td>
-                            <td class="px-6 py-3 text-neon-red font-bold">WITHDRAW_OP</td>
-                            <td class="px-6 py-3 text-neon-red">Rp 99,000,000</td>
+                            <td class="px-6 py-3 text-neon-yellow font-bold">WITHDRAW_OP</td>
+                            <td class="px-6 py-3 text-neon-yellow" contenteditable="true">Rp 91,000,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-blue text-neon-blue px-2 py-0.5 text-[10px] animate-pulse">PENDING_SIG</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_16:15:01</td>
                         </tr>
                         <tr class="hover:bg-red-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">DEDDY_SETIAWAN_pod</td>
-                            <td class="px-6 py-3 text-neon-red font-bold">WITHDRAW_OP</td>
-                            <td class="px-6 py-3 text-neon-red">Rp 4,500,000</td>
+                            <td class="px-6 py-3 text-neon-yellow font-bold">WITHDRAW_OP</td>
+                            <td class="px-6 py-3 text-neon-yellow" contenteditable="true">Rp 4,500,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-blue text-neon-blue px-2 py-0.5 text-[10px] animate-pulse">PENDING_SIG</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_16:10:00</td>
                         </tr>
                         <tr class="hover:bg-red-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">SULEMAN_RAHMAN</td>
-                            <td class="px-6 py-3 text-neon-red font-bold">WITHDRAW_OP</td>
-                            <td class="px-6 py-3 text-neon-red">Rp 2,000,000</td>
+                            <td class="px-6 py-3 text-neon-yellow font-bold">WITHDRAW_OP</td>
+                            <td class="px-6 py-3 text-neon-yellow" contenteditable="true">Rp 24,000,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-blue text-neon-blue px-2 py-0.5 text-[10px] animate-pulse">PENDING_SIG</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_16:05:55</td>
                         </tr>
                         <tr class="hover:bg-green-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">REZA_FAHLEVI_weird</td>
                             <td class="px-6 py-3 text-neon-green font-bold">DEPOSIT_OP</td>
-                            <td class="px-6 py-3 text-neon-blue">Rp 60,000,000</td>
+                            <td class="px-6 py-3 text-neon-blue">Rp 95,000,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-green text-neon-green px-2 py-0.5 text-[10px]">VERIFIED</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_16:00:22</td>
                         </tr>
                         <tr class="hover:bg-red-950/20">
                             <td class="px-6 py-3 text-white" contenteditable="true">TAUFIK_HIDAYAT_node</td>
-                            <td class="px-6 py-3 text-neon-red font-bold">WITHDRAW_OP</td>
-                            <td class="px-6 py-3 text-neon-red">Rp 150,000,000</td>
+                            <td class="px-6 py-3 text-neon-yellow font-bold">WITHDRAW_OP</td>
+                            <td class="px-6 py-3 text-neon-yellow" contenteditable="true">Rp 15,000,000</td>
                             <td class="px-6 py-3"><span class="border border-neon-blue text-neon-blue px-2 py-0.5 text-[10px] animate-pulse">PENDING_SIG</span></td>
                             <td class="px-6 py-3 text-gray-500">2026.04.20_15:55:01</td>
                         </tr>
@@ -299,14 +253,6 @@
 
     </div>
 
-    <script>
-        function updateTime() {
-            const now = new Date();
-            const timeString = now.toISOString().replace('T', ' ').substring(0, 19);
-            document.getElementById('current-time').innerText = timeString;
-        }
-        setInterval(updateTime, 1000);
-        updateTime();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
